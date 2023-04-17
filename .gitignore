@@ -1,0 +1,6 @@
+myinstance.tfvars
+longhorn/*
+harbor/*
+*.tfstate
+*.tfstate.*
+*.terraform.lock.*
