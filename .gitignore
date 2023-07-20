@@ -4,3 +4,6 @@ harbor/*
 *.tfstate
 *.tfstate.*
 *.terraform.lock.*
+environment/helm-install/.terraform/*
+.gitignore
+.terraform/*
