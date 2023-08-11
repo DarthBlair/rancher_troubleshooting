@@ -14,31 +14,7 @@
 # }
 
 #kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.12.2/cert-manager.crds.yaml
-data "http" "manifestfile" {
-  url = "https://github.com/cert-manager/cert-manager/releases/download/v1.12.2/cert-manager.crds.yaml"
-}
 
-
-resource "kubectl_manifest" "cert-manager-crds" {
-    yaml_body = data.http.manifestfile.response_body
-}
-
-
-
-
-# install cert-manager
-resource "helm_release" "cert_manager" {
-  depends_on = [kubectl_manifest.cert-manager-crds]
-  repository = "https://charts.jetstack.io"
-  version    = "v1.12.2"
-  name       = "cert-manager"
-  chart      = "cert-manager"
-  namespace  = "cert-manager"
-  create_namespace = true
-
-
-  # Bogus set to link together resources for proper tear down
-}
 
 # helm install rancher rancher-latest/rancher --namespace cattle-system --set hostname=rancher.rd.localhost --wait --timeout=10m
 # install rancher
@@ -62,10 +38,10 @@ resource "helm_release" "rancher" {
   }
 
   # Bogus set to link togeather resources for proper tear down
-  set {
-    name  = "tf_link"
-    value = helm_release.cert_manager.name
-  }
+  # set {
+  #   name  = "tf_link"
+  #   value = helm_release.cert_manager.name
+  # }
 }
 
 # resource "null_resource" "wait_for_rancher" {
