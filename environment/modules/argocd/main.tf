@@ -31,3 +31,18 @@ resource "helm_release" "argocd" {
     value = "password"
   }
 }
+
+
+resource "kubectl_manifest" "test" {
+    yaml_body = <<YAML
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  valuesContent: |-
+    additionalArguments:
+      - "--serverstransport.insecureskipverity=true"
+YAML
+}
