@@ -1,0 +1,212 @@
+{
+  "version": 4,
+  "terraform_version": "1.5.2",
+  "serial": 6,
+  "lineage": "f59848ff-eb0e-abde-50b2-214733c968b2",
+  "outputs": {},
+  "resources": [
+    {
+      "module": "module.argocd",
+      "mode": "managed",
+      "type": "helm_release",
+      "name": "argocd",
+      "provider": "provider[\"registry.terraform.io/hashicorp/helm\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "atomic": false,
+            "chart": "argo-cd",
+            "cleanup_on_fail": false,
+            "create_namespace": false,
+            "dependency_update": false,
+            "description": null,
+            "devel": null,
+            "disable_crd_hooks": false,
+            "disable_openapi_validation": false,
+            "disable_webhooks": false,
+            "force_update": false,
+            "id": "argo-cd",
+            "keyring": null,
+            "lint": false,
+            "manifest": null,
+            "max_history": 0,
+            "metadata": [
+              {
+                "app_version": "2.8.0",
+                "chart": "argo-cd",
+                "name": "argo-cd",
+                "namespace": "default",
+                "revision": 1,
+                "values": "{\"config\":{\"secret\":{\"argocdServerAdminPassword\":\"password\"}},\"server\":{\"ingress\":{\"enabled\":true,\"hostname\":\"rancher.rd.localhost\",\"selfSigned\":true,\"tls\":true}}}",
+                "version": "4.7.21"
+              }
+            ],
+            "name": "argo-cd",
+            "namespace": "default",
+            "pass_credentials": false,
+            "postrender": [],
+            "recreate_pods": false,
+            "render_subchart_notes": true,
+            "replace": false,
+            "repository": "oci://registry-1.docker.io/bitnamicharts",
+            "repository_ca_file": null,
+            "repository_cert_file": null,
+            "repository_key_file": null,
+            "repository_password": null,
+            "repository_username": null,
+            "reset_values": false,
+            "reuse_values": false,
+            "set": [
+              {
+                "name": "config.secret.argocdServerAdminPassword",
+                "type": "",
+                "value": "password"
+              },
+              {
+                "name": "server.ingress.enabled",
+                "type": "",
+                "value": "true"
+              },
+              {
+                "name": "server.ingress.hostname",
+                "type": "",
+                "value": "rancher.rd.localhost"
+              },
+              {
+                "name": "server.ingress.selfSigned",
+                "type": "",
+                "value": "true"
+              },
+              {
+                "name": "server.ingress.tls",
+                "type": "",
+                "value": "true"
+              }
+            ],
+            "set_list": [],
+            "set_sensitive": [],
+            "skip_crds": false,
+            "status": "deployed",
+            "timeout": 300,
+            "values": null,
+            "verify": false,
+            "version": "4.7.21",
+            "wait": true,
+            "wait_for_jobs": false
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ=="
+        }
+      ]
+    },
+    {
+      "module": "module.argocd",
+      "mode": "managed",
+      "type": "kubectl_manifest",
+      "name": "test",
+      "provider": "provider[\"registry.terraform.io/gavinbunney/kubectl\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "api_version": "helm.cattle.io/v1",
+            "apply_only": false,
+            "force_conflicts": false,
+            "force_new": false,
+            "id": "/apis/helm.cattle.io/v1/namespaces/kube-system/helmchartconfigs/traefik",
+            "ignore_fields": null,
+            "kind": "HelmChartConfig",
+            "live_manifest_incluster": "6955bb2864e262fcf7efb6d23fdd343c2b84dd5226f0206666811af1fe817eb4",
+            "live_uid": "d3a16308-f5f9-4964-81a5-7901237cba68",
+            "name": "traefik",
+            "namespace": "kube-system",
+            "override_namespace": null,
+            "sensitive_fields": null,
+            "server_side_apply": false,
+            "timeouts": null,
+            "uid": "d3a16308-f5f9-4964-81a5-7901237cba68",
+            "validate_schema": true,
+            "wait": null,
+            "wait_for_rollout": true,
+            "yaml_body": "apiVersion: helm.cattle.io/v1\r\nkind: HelmChartConfig\r\nmetadata:\r\n  name: traefik\r\n  namespace: kube-system\r\nspec:\r\n  valuesContent: |-\r\n    additionalArguments:\r\n      - \"--serverstransport.insecureskipverify=true\"\r\n",
+            "yaml_body_parsed": "apiVersion: helm.cattle.io/v1\nkind: HelmChartConfig\nmetadata:\n  name: traefik\n  namespace: kube-system\nspec:\n  valuesContent: |-\n    additionalArguments:\n      - \"--serverstransport.insecureskipverify=true\"\n",
+            "yaml_incluster": "6955bb2864e262fcf7efb6d23fdd343c2b84dd5226f0206666811af1fe817eb4"
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDB9LCJzY2hlbWFfdmVyc2lvbiI6IjEifQ=="
+        }
+      ]
+    },
+    {
+      "module": "module.tekton",
+      "mode": "managed",
+      "type": "helm_release",
+      "name": "tekton",
+      "provider": "provider[\"registry.terraform.io/hashicorp/helm\"]",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "atomic": false,
+            "chart": "tekton-pipeline",
+            "cleanup_on_fail": false,
+            "create_namespace": false,
+            "dependency_update": false,
+            "description": null,
+            "devel": null,
+            "disable_crd_hooks": false,
+            "disable_openapi_validation": false,
+            "disable_webhooks": false,
+            "force_update": false,
+            "id": "cdf",
+            "keyring": null,
+            "lint": false,
+            "manifest": null,
+            "max_history": 0,
+            "metadata": [
+              {
+                "app_version": "0.42.0",
+                "chart": "tekton-pipeline",
+                "name": "cdf",
+                "namespace": "default",
+                "revision": 1,
+                "values": "{}",
+                "version": "1.0.2"
+              }
+            ],
+            "name": "cdf",
+            "namespace": "default",
+            "pass_credentials": false,
+            "postrender": [],
+            "recreate_pods": false,
+            "render_subchart_notes": true,
+            "replace": false,
+            "repository": "https://cdfoundation.github.io/tekton-helm-chart/",
+            "repository_ca_file": null,
+            "repository_cert_file": null,
+            "repository_key_file": null,
+            "repository_password": null,
+            "repository_username": null,
+            "reset_values": false,
+            "reuse_values": false,
+            "set": [],
+            "set_list": [],
+            "set_sensitive": [],
+            "skip_crds": false,
+            "status": "deployed",
+            "timeout": 300,
+            "values": null,
+            "verify": false,
+            "version": "1.0.2",
+            "wait": true,
+            "wait_for_jobs": false
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ=="
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

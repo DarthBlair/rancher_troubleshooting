@@ -4,8 +4,8 @@ resource "helm_release" "argocd" {
   version    = "4.7.21"
   name       = "argo-cd"
   chart      = "argo-cd"
-  #namespace  = "tekton-pipelines"
-  #create_namespace = true
+  namespace  = "argocd"
+  create_namespace = true
   
   # Bogus set to link together resources for proper tear down
   set {
@@ -43,6 +43,6 @@ metadata:
 spec:
   valuesContent: |-
     additionalArguments:
-      - "--serverstransport.insecureskipverity=true"
+      - "--serverstransport.insecureskipverify=true"
 YAML
 }
