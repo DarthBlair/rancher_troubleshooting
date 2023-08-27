@@ -4,7 +4,7 @@ resource "helm_release" "tekton" {
   version    = "1.0.2"
   name       = "cdf"
   chart      = "tekton-pipeline"
-  #namespace  = "tekton-pipelines"
+  namespace  = "tekton-pipelines"
   #create_namespace = true
   
   # Bogus set to link together resources for proper tear down
